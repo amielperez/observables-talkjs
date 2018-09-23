@@ -1,0 +1,33 @@
+{
+  "name": "observables-talkjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --config ./webpack.config.js",
+    "build": "node ./node_modules/webpack/bin/webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amielperez/observables-talkjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amielperez/observables-talkjs/issues"
+  },
+  "homepage": "https://github.com/amielperez/observables-talkjs#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "rxjs": "^6.3.2",
+    "webpack": "^3.12.0",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-middleware": "^3.3.0",
+    "webpack-dev-server": "^2.11.3",
+    "webpack-hot-middleware": "^2.24.2"
+  }
+}
