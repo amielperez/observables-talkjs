@@ -1,5 +1,6 @@
 import { fromEvent, interval, merge } from 'rxjs';
 import { buffer, bufferTime , map, debounceTime, filter } from 'rxjs/operators'
+import { addClass, removeClass } from './utils';
 
 const clickbox = document.getElementById('clickbox');
 const message = document.getElementById('message');
@@ -28,14 +29,23 @@ const idleObservable$ = merge(singleClickObservable$, multiClickObservable$)
     )
 
 singleClickObservable$.subscribe(() => {
-    message.textContent = 'Single clicked!';
+    addClass(clickbox, 'single');
+    removeClass(clickbox, 'double');
+    clickbox.textContent = '1 Click';
 });
 
 multiClickObservable$.subscribe(() => {
-    message.textContent = 'Double+ clicked!';
+    removeClass(clickbox, 'single');
+    addClass(clickbox, 'double');
+    clickbox.textContent = '2+ Clicks';
 });
 
 idleObservable$.subscribe(() => {
-    message.textContent = '';
+    removeClass(clickbox, 'single');
+    removeClass(clickbox, 'double');
+    clickbox.textContent = 'Click me';
 })
 
+// For visual clarity only
+const heading = document.getElementById('heading');
+heading.textContent = 'Track Clicks WITH Observables';
