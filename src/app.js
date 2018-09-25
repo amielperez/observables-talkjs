@@ -1,9 +1,15 @@
 import { fromEvent } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { initCanvas, paintOn } from './utils';
 
-const button = document.getElementById('demo-btn');
-const output = document.getElementById('output');
+const canvas = document.getElementById('canvas');
+const ctx = initCanvas(canvas);
 
-fromEvent(button, 'click')
-    .subscribe(() => {
-        output.textContent = `${(new Date()).toString()} (Using observables)`;
-    })
+const moveObservable$ = fromEvent(document, 'mousemove')
+    .pipe(
+        map((pos) => ({ x: pos.clientX, y: pos.clientY }))
+    );
+
+moveObservable$.subscribe((brushPos) => {
+    paintOn(ctx, brushPos);
+});
